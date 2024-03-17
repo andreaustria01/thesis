@@ -15,8 +15,6 @@
 
 <br>
 <br>
-<br>
-<br>
 
 <p>
     1. Go to your prefer directory then clone the code.
