@@ -4,7 +4,11 @@
     REQUIREMENTS:
     <h5>
         NODE JS
+    </h5>
+    <h5>
         COMPOSER
+    </h5>
+    <h5>
         GIT BASH
     </h5>
 </h3>
