@@ -13,6 +13,11 @@
     </h5>
 </h3>
 
+<br>
+<br>
+<br>
+<br>
+
 <p>
     1. Go to your prefer directory then clone the code.
     Copy this code: "git clone https://github.com/andreaustria01/thesis.git".
