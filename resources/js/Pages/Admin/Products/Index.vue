@@ -5,32 +5,32 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head } from '@inertiajs/vue3';
-import {Link, useForm, router } from '@inertiajs/vue3';
+import { Link } from '@inertiajs/vue3';
+import { useForm } from '@inertiajs/vue3';
+import { router } from '@inertiajs/vue3';
 
-defineProps({
+const porps = defineProps({
     products: {
         type: Object,
         default: () => ({}),
     },
-    pastries: {
-        type: Object,
-        default: () => ({}),
-    },
-    hotbakes: {
-        type: Object,
-        default:() => ({}),
-    }
+    // pastries: {
+    //     type: Object,
+    //     default: () => ({}),
+    // },
+    // hotbakes: {
+    //     type: Object,
+    //     default:() => ({}),
+    // }
 });
 
-// const form = useForm();
+const form = useForm({});
 
-// function destroy(id) {
-//     if (confirm("Are you sure tangina ka?")) {
-//         form.delete(route('products.destroy', id));
-//     }
-// }
-
-
+function destroy(id) {
+    if (confirm("Sure ka ba idedelete mo? Di na to mababalik tanginamo ahh")) {
+        form.delete(route('products.destroy', id));
+    }
+}
 </script>
 
 <template>
@@ -76,7 +76,7 @@ defineProps({
                                             {{ product.category }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{  product.price }}
+                                            ₱{{  product.price }}
                                         </td>
                                         <td class="px-6 py-4">
                                             {{ product.quantity }}
@@ -89,7 +89,7 @@ defineProps({
                                                 </svg>
                                             </button>
                                             <button class="ml-3 text-[#B91C1C]"
-                                                
+                                                @click="destroy(product.id)"
                                             >
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>

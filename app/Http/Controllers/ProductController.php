@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class ProductController extends Controller
@@ -16,8 +17,8 @@ class ProductController extends Controller
         // Rendering Product page
         return Inertia::render('Admin/Products/Index', [
             'products' => Product::all(),
-            'pastries' => Product::where('category', 'pastries')->get(),
-            'hotbakes' => Product::where('category', 'hotbakes')->get(),
+            // 'pastries' => Product::where('category', 'pastries')->get(),
+            // 'hotbakes' => Product::where('category', 'hotbakes')->get(),
         ]);
     }
 
@@ -50,7 +51,7 @@ class ProductController extends Controller
         ]);
         sleep(1);
 
-        return redirect()->route('products.index')->with('message', 'Created Successfully');
+        return Redirect::route('products.index');
     
     }
 
@@ -87,6 +88,6 @@ class ProductController extends Controller
         $product->delete();
         sleep(1);
 
-        return redirect()->route('products.index');
+        return Redirect::route('products.index');
     }
 }
