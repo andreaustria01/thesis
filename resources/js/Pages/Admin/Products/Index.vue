@@ -1,13 +1,8 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import Dropdown2nd from '@/Components/Dropdown2nd.vue';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
 import { Head } from '@inertiajs/vue3';
 import { Link } from '@inertiajs/vue3';
 import { useForm } from '@inertiajs/vue3';
-import { router } from '@inertiajs/vue3';
 
 const porps = defineProps({
     products: {
@@ -39,13 +34,38 @@ function destroy(id) {
     <AuthenticatedLayout>
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-4">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-slate-700">
+                    <div class="p-6 text-slate-700 tracking-wide">
 
-                        <Link href="products/create"
-                            class="text-sm"
-                        >
-                            CREATE
-                        </Link>
+                        <div class="flex justify-between mb-5">
+                            <div class="flex font-bold ">
+                                <li style="list-style: none;">
+                                    <Link href="/"
+                                    class="text-xs mr-4 hover:text-[#0108EE] duration-150 ease-in-out"
+                                    >
+                                        DASHBOARD
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/products"
+                                    class="text-xs text-[#0108EE]"
+                                    >
+                                        PRODUCTS
+                                    </Link>
+                                </li>
+                            </div>
+
+                            <!-- Create button -->
+                            <div>
+                                <Link href="products/create"
+                                class="p-2 font-bold border border-[#0108EE] rounded-xl text-xs text-[#0108EE]
+                                hover:bg-[#0108EE] hover:text-white duration-150 ease-in-out"
+                                >
+                                    CREATE
+                                </Link>
+                            </div>
+                        </div>
+                        
+                        <!-- Table -->
                         <div class="relative overflow-x-auto border ">
                             <table class="w-full text-sm text-left">
                                 <thead class="text-xs uppercase bg-gray-100">
@@ -79,7 +99,7 @@ function destroy(id) {
                                             ₱{{  product.price }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ product.quantity }}
+                                            x{{ product.quantity }}
                                         </td>
                                         <td class="px-6 py-4 flex">
                                             <button class="mr-3 text-[#0108EE]">
@@ -102,8 +122,8 @@ function destroy(id) {
                             </table>
                         </div>
 
+                        <!-- <iframe class="w-full aspect-auto" src="products/create"></iframe> -->
                         
-
                         
 
                     </div>

@@ -1,8 +1,10 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import Modal2 from '@/Components/Modal2.vue';
-import { Head } from '@inertiajs/vue3';
-import { useForm } from '@inertiajs/vue3';
+import TextInput from '@/Components/TextInput.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import InputError from '@/Components/InputError.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import { Link, Head, useForm } from '@inertiajs/vue3';
 
 const form = useForm({
     category: '',
@@ -21,36 +23,93 @@ const submit = () => {
     <Head title="Create" />
 
     <AuthenticatedLayout>
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-4">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">
+                    <div class="p-6 text-slate-700 tracking-wide">
+
+                        <div class="flex justify-between mb-5">
+                            <div class="flex font-bold">
+                                <li style="list-style: none;">
+                                    <Link href="/"
+                                    class="text-xs mr-4 hover:text-[#0108EE] duration-150 ease-in-out"
+                                    >
+                                        DASHBOARD
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/products"
+                                    class="text-xs mr-4 hover:text-[#0108EE] duration-150 ease-in-out"
+                                    >
+                                        PRODUCTS
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="products/create"
+                                    class="text-xs text-[#0108EE]"
+                                    >
+                                        CREATE
+                                    </Link>
+                                </li>
+                            </div>
+                        </div>
+
                         <form @submit.prevent="submit">
                             <div>
-                                <label for="category"> Category </label>
-                                <input type="category" v-model="form.category">
+                                <InputLabel for="category" value="Category" />
+                                <TextInput 
+                                    class="mt-1 block w-full"
+                                    type="category"
+                                    id="category"
+                                    v-model="form.category"
+                                    required
+                                    autofocus
+                                />
+
+                                <InputError :message="form.errors.category"/>
                             </div>
                             <div>
-                                <label for="productName"> ProductName </label>
-                                <input type="productName" v-model="form.productName">
+                                <InputLabel for="productName" value="Product Name" />
+
+                                <TextInput 
+                                    id="productName"
+                                    type="productName"
+                                    v-model="form.productName" 
+                                    required
+                                />
+                                
+                                <InputError :message="form.errors.productName" />
                             </div>
                             <div>
-                                <label for="price"> price </label>
-                                <input type="price" v-model="form.price">
+                                <InputLabel for="price" value="Price" />
+                                <TextInput
+                                    id="price"
+                                    type="price"
+                                    v-model="form.price"
+                                    required
+                                />
+
+                                <InputError :message="form.errors.price" />
                             </div>
                             <div>
-                                <label for="quantity"> quantity </label>
-                                <input type="quantity" v-model="form.quantity">
+                                <InputLabel for="quantity" value="Quantity" />
+
+                                <TextInput
+                                    id="quantity"
+                                    type="quantity"
+                                    v-model="form.quantity"
+                                    required
+                                />
+
+                                <InputError :message="form.errors.quantity" />
                             </div>
                             
-                            <button type="submit"> Submit </button>
+                            <PrimaryButton class="" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                                CREATE
+                            </PrimaryButton>
                         </form>
-
-                        
 
                     </div>
                 </div>
             </div>
-        </div>
     </AuthenticatedLayout>
 </template>
