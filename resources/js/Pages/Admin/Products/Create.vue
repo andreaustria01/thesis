@@ -57,7 +57,7 @@ const submit = () => {
                             <div>
                                 <InputLabel for="category" value="Category" />
                                 <TextInput 
-                                    class="mt-1 block w-full"
+                                    class="mt-1 block w-full border"
                                     type="category"
                                     id="category"
                                     v-model="form.category"
@@ -70,7 +70,8 @@ const submit = () => {
                             <div>
                                 <InputLabel for="productName" value="Product Name" />
 
-                                <TextInput 
+                                <TextInput
+                                    class="mt-1 block w-full border"
                                     id="productName"
                                     type="productName"
                                     v-model="form.productName" 
@@ -82,6 +83,7 @@ const submit = () => {
                             <div>
                                 <InputLabel for="price" value="Price" />
                                 <TextInput
+                                    class="mt-1 block w-full border"
                                     id="price"
                                     type="price"
                                     v-model="form.price"
@@ -94,6 +96,7 @@ const submit = () => {
                                 <InputLabel for="quantity" value="Quantity" />
 
                                 <TextInput
+                                    class="mt-1 block w-full border"
                                     id="quantity"
                                     type="quantity"
                                     v-model="form.quantity"
