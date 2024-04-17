@@ -1,0 +1,7 @@
+<div v-for="product in products" :key="products.id">
+                                    <div v-if="product.category == 'Assorted Bread'">
+                                        asdas
+                                    </div>
+                                    <div v-if="product.category == ('Pastries', 'Loaves')"> asd </div>
+
+                                </div>

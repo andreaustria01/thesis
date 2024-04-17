@@ -32,43 +32,23 @@ function destroy(id) {
     <Head title="Products" />
     
     <AuthenticatedLayout>
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-4">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-slate-700 tracking-wide">
+        <article class="flex-1 w-full p-5">
+            <!-- Top -->
+            <div class="flex justify-between">
+                <h2> Products </h2>
+                <Link href="products/create"
+                    class="p-2 px-3 font-bold border border-[#0108EE] rounded-xl text-xs text-[#0108EE]
+                    hover:bg-[#0108EE] hover:text-white duration-150 ease-in-out"
+                >
+                    CREATE
+                </Link>
+            </div>
+            <div class="my-5 w-full h-[0.1px] dark:bg-white " />
 
-                        <div class="flex justify-between mb-5">
-                            <div class="flex font-bold ">
-                                <li style="list-style: none;">
-                                    <Link href="/"
-                                    class="text-xs mr-4 hover:text-[#0108EE] duration-150 ease-in-out"
-                                    >
-                                        DASHBOARD
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/products"
-                                    class="text-xs text-[#0108EE]"
-                                    >
-                                        PRODUCTS
-                                    </Link>
-                                </li>
-                            </div>
-
-                            <!-- Create button -->
-                            <div>
-                                <Link href="products/create"
-                                class="p-2 font-bold border border-[#0108EE] rounded-xl text-xs text-[#0108EE]
-                                hover:bg-[#0108EE] hover:text-white duration-150 ease-in-out"
-                                >
-                                    CREATE
-                                </Link>
-                            </div>
-                        </div>
-                        
-                        <!-- Table -->
-                        <div class="relative overflow-x-auto border ">
+            <!-- Bottom Table -->
+            <div class="relative overflow-x-auto">
                             <table class="w-full text-sm text-left">
-                                <thead class="text-xs uppercase bg-gray-100">
+                                <thead class="text-xs uppercase ">
                                     <tr>
                                         <th scope="col" class="px-6 py-3">
                                             Product Name
@@ -87,9 +67,10 @@ function destroy(id) {
                                         </th>
                                     </tr>
                                 </thead>
+                                
                                 <tbody>
-                                    <tr class="bg-white border-b" v-for="product in products" :key="products.id">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900">
+                                    <tr v-for="product in products" :key="products.id">
+                                        <th scope="row" class="px-6 py-4 font-medium text-white">
                                             {{ product.productName }}
                                         </th>
                                         <td class="px-6 py-4">
@@ -125,12 +106,6 @@ function destroy(id) {
                             </table>
                         </div>
 
-                        <!-- <iframe class="w-full aspect-auto" src="products/create"></iframe> -->
-                        
-                        
-
-                    </div>
-                </div>
-            </div>
+        </article>
     </AuthenticatedLayout>
 </template>
