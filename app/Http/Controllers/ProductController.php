@@ -15,7 +15,7 @@ class ProductController extends Controller
     public function index()
     {
         // Rendering Product page
-        return Inertia::render('Admin/Products/Index', [
+        return Inertia::render('Admin/Inventory/Products/Index', [
             'products' => Product::all(),
             // 'pastries' => Product::where('category', 'pastries')->get(),
             // 'hotbakes' => Product::where('category', 'hotbakes')->get(),
@@ -28,7 +28,7 @@ class ProductController extends Controller
     public function create()
     {
         //
-        return Inertia::render('Admin/Products/Create');
+        return Inertia::render('Admin/Inventory/Products/Create');
     }
 
     /**
@@ -42,12 +42,14 @@ class ProductController extends Controller
             'productName' => 'required|string|max:255',
             'price' => 'required|string|max:255',
             'quantity' => 'required|string|max:255',
+            'criticalLevel' => 'required|string|max:255',
         ]);
         Product::create([
             'category' => $request->category,
             'productName' => $request->productName,
             'price' => $request->price,
             'quantity' => $request->quantity,
+            'criticalLevel' => $request->quantity,
         ]);
         sleep(1);
 
@@ -69,7 +71,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         //
-        return Inertia::render('Admin/Products/Edit', [
+        return Inertia::render('Admin/Inventory/Products/Edit', [
             'product' => $product
         ]);
     }

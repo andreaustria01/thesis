@@ -4,6 +4,14 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { Head } from '@inertiajs/vue3';
 import { Link } from '@inertiajs/vue3';
 import { useForm } from '@inertiajs/vue3';
+
+const props = defineProps({
+    products: {
+        type: Object,
+        default: () => ({}),
+    },
+});
+
 </script>
 
 <template>
@@ -38,9 +46,17 @@ import { useForm } from '@inertiajs/vue3';
                         </PrimaryButton>
                     </div>
                 </div>
+
+                
+                <div class="overflow-auto">
+                    <div class="flex bg-[#374151]">
+                        sssdas
+                    </div>
+                </div>
             </div>
         </article>
 
+        <!-- right bar -->
         <div class="w-[25%] rounded-lg p-5 dark:bg-[#1E293B]">
             <div class="flex flex-col h-full">
                 <div>
@@ -62,7 +78,7 @@ import { useForm } from '@inertiajs/vue3';
                 <div class="flex flex-col justify-between gap-5 h-full mt-5">
                     <!-- Top -->
                     <div class="p-5 rounded-2xl dark:bg-[#374151]">
-                        <div class="flex-none overflow-y-auto">
+                        <div class="flex-none overflow-y-auto max-h-[20vh]">
 
                             <div class="p-5 rounded-2xl dark:bg-[#4B5563]">
                                 <h5> Brownies </h5>

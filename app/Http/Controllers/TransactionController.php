@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use App\Models\Product;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
+use Illuminate\Support\Facades\Redirect;
 
 class TransactionController extends Controller
 {
@@ -34,6 +35,23 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'category' => 'required|string|max:255',
+            'productName' => 'required|string|max:255',
+            'price' => 'required|string|max:255',
+            'quantity' => 'required|string|max:255',
+            'criticalLevel' => 'required|string|max:255',
+        ]);
+        Product::create([
+            'category' => $request->category,
+            'productName' => $request->productName,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+            'criticalLevel' => $request->quantity,
+        ]);
+        sleep(1);
+
+        return Redirect::route('transactions.index');
     }
 
     /**

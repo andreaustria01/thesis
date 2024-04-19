@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RawMaterialController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +33,12 @@ Route::resource('/products', ProductController::class)
 ->middleware(['auth', 'verified']);
 
 Route::resource('/transactions', TransactionController::class)
+->middleware(['auth', 'verified']);
+
+Route::resource('/rawmaterials', RawMaterialController::class)
+->middleware(['auth', 'verified']);
+
+Route::resource('/clients', ClientController::class)
 ->middleware(['auth', 'verified']);
 
 Route::get('/', function () {
