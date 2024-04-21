@@ -16,24 +16,28 @@ class DatabaseSeeder extends Seeder
     protected $users = [
         [
             'name' => 'owner',
+            'roles' => 'superadmin',
             'email' => 'owner@gmail.com',
             'password' => 'owner12345',
         ],
 
         [
             'name' => 'admin',
+            'roles' => 'admin',
             'email' => 'admin@gmail.com',
             'password' => 'admin12345',
         ],
 
         [
             'name' => 'user',
+            'roles' => 'user',
             'email' => 'user@gmail.com',
             'password' => 'user12345',
         ],
 
         [
             'name' => 'driver',
+            'roles' => 'driver',
             'email' => 'driver@gmail.com',
             'password' => 'driver12345',
         ],

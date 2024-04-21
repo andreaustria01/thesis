@@ -18,6 +18,7 @@ class TransactionController extends Controller
         //
         return Inertia::render('Admin/Transactions/Index', [
             'products' => Product::all(),
+            'pastries' => Product::where('category', 'pastries')->get(),
         ]);
     }
 

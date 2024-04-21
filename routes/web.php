@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RawMaterialController;
@@ -39,6 +40,9 @@ Route::resource('/rawmaterials', RawMaterialController::class)
 ->middleware(['auth', 'verified']);
 
 Route::resource('/clients', ClientController::class)
+->middleware(['auth', 'verified']);
+
+Route::resource('/delivery', DeliveryController::class)
 ->middleware(['auth', 'verified']);
 
 Route::get('/', function () {
