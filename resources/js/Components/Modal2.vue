@@ -1,57 +1,58 @@
+<script setup>
+import { ref } from 'vue';
+
+// Modal
+const showModal = ref(false);
+
+function toggleModal() {
+    showModal.value = !showModal.value;
+}
+</script>
+
 <template>
-    <div id="app">
-      <div class="flex flex-col items-center justify-center p-3 min-h-full">
-        <h1
-          class="my-4 text-3xl text-center font-medium tracking-wider text-purple-700"
-        >
-          Vue.js Modal transition
-        </h1>
-        <button
-          @click="onToggle"
-          class="bg-purple-500 border border-purple-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-md hover:shadow-lg hover:bg-purple-600"
-        >
-        <slot name="trigger" />
-        </button>
-      </div>
-      <transition name="fade">
-        <div v-if="isModalVisible">
-          <div
-            @click="onToggle"
-            class="absolute bg-black opacity-70 inset-0 z-0"
-          ></div>
-          <div
-            class="w-full max-w-lg p-3 relative mx-auto my-auto rounded-xl shadow-lg bg-white"
-          >
-            <div>
-              <div class="text-center p-3 flex-auto justify-center leading-6">
-                
-                <slot name="content" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </transition>
+    <div>
+        <!-- Modal trigger -->
+        <slot name="trigger" @click="toggleModal" />
+
+        <!-- Modal -->
+        <TransitionRoot as="template">
+            <TransitionChild
+                :enter-class="enterFromClass"
+                :enter-active-class="enterActiveClass"
+                :enter-to-class="enterToClass"
+                :leave-class="leaveFromClass"
+                :leave-active-class="leaveActiveClass"
+                :leave-to-class="leaveToClass"
+            >
+                <div v-show="showModal" class="modal-overlay" @click="toggleModal">
+                    <div class="modal" @click.stop>
+                        <!-- Modal content -->
+                        <slot name="content" />
+                    </div>
+                </div>
+            </TransitionChild>
+        </TransitionRoot>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        isOpen: true
-      };
-    },
-  
-    computed: {
-      isModalVisible() {
-        return this.isOpen;
-      }
-    },
-  
-    methods: {
-      onToggle() {
-        this.isOpen = !this.isOpen;
-      }
-    }
-  };
-  </script>
+</template>
+
+<style scoped>
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+</style>

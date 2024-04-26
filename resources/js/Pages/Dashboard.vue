@@ -66,7 +66,7 @@ import { Head } from '@inertiajs/vue3';
                 </div>
 
                 <div class="mt-5 p-5 rounded-2xl dark:bg-[#1E293B]">
-                    TANGINAMO HAHAHAHAHAHAHAHAHAHAHAAHAHAHAH
+                    <!-- Template -->
                 </div>
 
             </article>
